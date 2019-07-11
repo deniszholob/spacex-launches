@@ -1,0 +1,41 @@
+<div class="mat-elevation-z8">
+    <mat-paginator [length]="dataTableSource?.data.length" [pageSize]="paginatorPageSizeOptions[0]"
+        [pageSizeOptions]="paginatorPageSizeOptions">
+    </mat-paginator>
+
+    <table mat-table #table [dataSource]="dataTableSource" matSort>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)="openUrl(row?.links?.presskit)"
+            [ngClass]="{'clickable-row': row?.links?.presskit !== null}">
+        </tr>
+
+        <!-- Column Definition: flight_number -->
+        <ng-container matColumnDef="flight_number">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Flight # </th>
+            <td mat-cell *matCellDef="let row"> {{row.flight_number}} </td>
+        </ng-container>
+
+        <!-- Column Definition: launch_year -->
+        <ng-container matColumnDef="launch_year">
+            <th mat-header-cell *matHeaderCellDef> Launch Year </th>
+            <td mat-cell *matCellDef="let row"> {{row.launch_year}} </td>
+        </ng-container>
+
+        <!-- Column Definition: rocket_name -->
+        <ng-container matColumnDef="rocket_name">
+            <th mat-header-cell *matHeaderCellDef> Rocket Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.rocket.rocket_name}} </td>
+        </ng-container>
+
+        <!-- Column Definition: details -->
+        <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef> Details </th>
+            <td mat-cell *matCellDef="let row"> {{row.details ? row.details : "No Launch Details"}} </td>
+        </ng-container>
+    </table>
+
+    <div class="loading-wrap" *ngIf="isLoading">
+        <mat-spinner *ngIf="isLoading">Loading</mat-spinner>
+    </div>
+
+</div>

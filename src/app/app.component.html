@@ -1,0 +1,23 @@
+<section>
+    <div class="container">
+        <h1 class="text-center">SpaceX Launches</h1>
+        <p>
+            Using the
+            <a href="https://github.com/r-spacex/SpaceX-API">SpaceX API</a>
+            to display the SpaceX Launches in a sortable table.
+            <br>
+            If a launch has a press kit, clicking on the highlighted row will open a link in a new window.
+        </p>
+        <p>
+            See source on
+            <a href="https://github.com/deniszholob/spacex-launches" target="_blank" rel="noopener" title="Github">
+                Github
+            </a>
+        </p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <sxl-data-table [inputData]="launches" [isLoading]="isLoading"></sxl-data-table>
+    </div>
+</section>
